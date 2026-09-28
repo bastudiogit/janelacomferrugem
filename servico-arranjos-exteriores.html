@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arranjos Exteriores — Janela com Ferrugem | Paisagismo e Espaços Exteriores</title>
+  <meta name="description" content="Arranjos exteriores e paisagismo no Norte de Portugal. A Janela com Ferrugem desenha jardins, pátios e espaços exteriores que prolongam a casa na paisagem.">
+  <link rel="canonical" href="servico-arranjos-exteriores.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="jcf-globals.css">
+  <style>
+    /* =======================================================================
+       SERVIÇO — Layout principal (mesmo padrão do projeto-detalhe)
+       ======================================================================= */
+    .jcf-servico-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+      max-width: var(--jcf-container-max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* =======================================================================
+       SERVIÇO — Grid 12 colunas
+       Col 1–2: Sidebar (← Serviços, Título)
+       Cols 4–10: Conteúdo (Imagem, Texto, Galeria)
+       ======================================================================= */
+    .jcf-servico-section {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+      width: 100%;
+      padding: 159px 60px 80px;
+      align-items: flex-start;
+    }
+
+    /* Sidebar */
+    .jcf-servico-sidebar {
+      align-items: flex-start;
+      grid-column: 1 / 3;
+      padding-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: sticky;
+      top: 60px;
+    }
+
+    .jcf-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      font-size: var(--jcf-fs-section-title);
+      letter-spacing: var(--jcf-ls-section-title);
+      text-transform: uppercase;
+      color: var(--e-global-color-secondary);
+      padding: 3px 8px;
+      margin-left: -8px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .jcf-back-link:hover {
+      background-color: var(--e-global-color-accent);
+      opacity: 1;
+    }
+
+    .jcf-servico-sidebar__title {
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--e-global-color-primary);
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    /* Conteúdo */
+    .jcf-servico-content {
+      grid-column: 4 / 10;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    /* Imagem principal */
+    .jcf-servico-hero {
+      width: 100%;
+      aspect-ratio: 760 / 460;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .jcf-servico-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Texto */
+    .jcf-servico-descricao {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 580px;
+    }
+
+    .jcf-servico__intro {
+      font-size: var(--jcf-fs-body);
+      line-height: var(--jcf-lh-body);
+      color: var(--e-global-color-secondary);
+    }
+
+    .jcf-servico__subtitle {
+      font-size: var(--jcf-fs-section-title);
+      letter-spacing: var(--jcf-ls-section-title);
+      text-transform: uppercase;
+      color: var(--e-global-color-secondary);
+    }
+
+    .jcf-servico__text {
+      font-size: var(--jcf-fs-body);
+      line-height: var(--jcf-lh-body);
+      color: var(--e-global-color-secondary);
+    }
+
+    .jcf-servico__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .jcf-servico__list-item {
+      font-size: var(--jcf-fs-body);
+      line-height: var(--jcf-lh-body);
+      color: var(--e-global-color-secondary);
+
+      position: relative;
+    }
+
+
+    /* Galeria */
+    .jcf-servico-galeria {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .jcf-servico-galeria__item {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .jcf-servico-galeria__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .jcf-servico-galeria__item:hover img {
+      transform: scale(1.02);
+    }
+
+    /* CTA */
+    .jcf-servico-cta {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .jcf-servico-cta__link {
+      font-size: var(--jcf-fs-section-title);
+      letter-spacing: var(--jcf-ls-section-title);
+      text-transform: uppercase;
+      color: var(--e-global-color-secondary);
+    }
+
+    /* --- TABLET ---------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .jcf-servico-section {
+        display: flex;
+        flex-direction: column;
+        padding: 40px 32px;
+        gap: 32px;
+      }
+
+      .jcf-servico-sidebar {
+      align-items: flex-start;
+        position: static;
+      }
+
+      .jcf-servico-galeria {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+
+    /* --- MOBILE ---------------------------------------------------------- */
+    @media (max-width: 767px) {
+      .jcf-servico-section {
+        padding: 40px 24px 30px;
+        gap: 24px;
+      }
+
+      .jcf-servico-content {
+        gap: 40px;
+      }
+
+      .jcf-servico-galeria {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .jcf-servico-cta {
+        gap: 24px;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Arranjos Exteriores",
+    "provider": {
+      "@type": "Organization",
+      "name": "Janela com Ferrugem",
+      "url": "index.html"
+    },
+    "areaServed": "Norte de Portugal",
+    "description": "Desenho de espaços exteriores, jardins, pátios e integração paisagística no Norte de Portugal."
+  }
+  </script>
+</head>
+
+<body>
+  <div class="jcf-servico-page">
+
+    <header class="jcf-header">
+      <a href="index.html" class="jcf-header__logo" aria-label="Janela com Ferrugem — Página Inicial">
+        <img src="assets/img/Asset 1.svg" alt="Janela com Ferrugem — Arquitetura com Propósito"
+          class="jcf-header__logo-img" width="131" height="71">
+      </a>
+      <div class="jcf-header__nav-wrapper">
+        <button class="jcf-header__menu-toggle" aria-label="Abrir menu" aria-expanded="false" id="menuToggle">
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
+          <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
+          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
+          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="jcf-servico-section">
+
+      <aside class="jcf-servico-sidebar">
+        <a href="sobre.html" class="jcf-back-link">&#8592; Serviços</a>
+        <h1 class="jcf-servico-sidebar__title">Arranjos<br>Exteriores</h1>
+      </aside>
+
+      <article class="jcf-servico-content">
+
+        <div class="jcf-servico-hero">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=485&fit=crop&crop=entropy&auto=format&q=80" alt="Arranjo exterior com jardim e percursos em pedra natural — projeto Janela com Ferrugem" width="760" height="460" loading="eager">
+        </div>
+
+        <section class="jcf-servico-descricao">
+          <p class="jcf-servico__intro">O exterior prolonga a casa na paisagem. Desenhamos jardins, pátios, muros, percursos e zonas de estar — espaços onde o construído e o natural se encontram sem forçar.</p>
+
+          <span class="jcf-servico__subtitle">A nossa abordagem</span>
+          <p class="jcf-servico__text">Trabalhamos com a topografia existente, a vegetação autóctone e os materiais da região. Nada de jardins de catálogo. Criamos espaços exteriores que pertencem àquele lugar e que evoluem com o tempo, como a paisagem à volta.</p>
+
+          <span class="jcf-servico__subtitle">O que fazemos</span>
+          <ul class="jcf-servico__list">
+            <li class="jcf-servico__list-item">Desenho de jardins e espaços verdes</li>
+            <li class="jcf-servico__list-item">Pátios, terraços e zonas de estar exteriores</li>
+            <li class="jcf-servico__list-item">Muros, vedações e elementos de contenção</li>
+            <li class="jcf-servico__list-item">Percursos pedonais e acessos</li>
+            <li class="jcf-servico__list-item">Integração paisagística de edifícios</li>
+            <li class="jcf-servico__list-item">Seleção de espécies vegetais autóctones</li>
+          </ul>
+
+          <span class="jcf-servico__subtitle">Paisagem e pertença</span>
+          <p class="jcf-servico__text">No Norte de Portugal, a paisagem tem uma força própria. Os nossos arranjos exteriores completam-na em vez de competir. Pedra local, vegetação que já cresce na região e soluções que pedem pouca manutenção — para que o exterior viva bem durante anos sem intervenção constante.</p>
+        </section>
+
+        <div class="jcf-servico-galeria">
+          <div class="jcf-servico-galeria__item">
+            <img src="https://images.unsplash.com/photo-1598902108854-d6f0eec67830?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Jardim com percurso em pedra natural" width="400" height="500" loading="lazy">
+          </div>
+          <div class="jcf-servico-galeria__item">
+            <img src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Pátio exterior com vegetação integrada" width="400" height="500" loading="lazy">
+          </div>
+          <div class="jcf-servico-galeria__item">
+            <img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Muro em pedra com plantas autóctones" width="400" height="500" loading="lazy">
+          </div>
+        </div>
+
+        <nav class="jcf-servico-cta" aria-label="Navegação de serviço">
+          <a href="contacto.html" class="jcf-servico-cta__link">Fale Connosco →</a>
+        </nav>
+
+      </article>
+
+    </main>
+
+  </div>
+
+  <div class="jcf-menu-backdrop" id="menuBackdrop"></div>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('menuToggle');
+      const dropdown = document.getElementById('menuDropdown');
+      const backdrop = document.getElementById('menuBackdrop');
+      function openMenu() { dropdown.classList.add('is-active'); backdrop.classList.add('is-active'); toggle.setAttribute('aria-expanded', 'true'); const fl = dropdown.querySelector('a'); if (fl) fl.focus(); }
+      function closeMenu() { dropdown.classList.remove('is-active'); backdrop.classList.remove('is-active'); toggle.setAttribute('aria-expanded', 'false'); }
+      function toggleMenu() { dropdown.classList.contains('is-active') ? closeMenu() : openMenu(); }
+      toggle.addEventListener('click', toggleMenu);
+      backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dropdown.classList.contains('is-active')) { closeMenu(); toggle.focus(); } });
+    })();
+  </script>
+</body>
+
+</html>

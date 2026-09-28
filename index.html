@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janela com Ferrugem — Arquitetura com Propósito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="jcf-globals.css">
+  <style>
+    /* =======================================================================
+       HOMEPAGE — Layout principal
+       Elementor: Container > Direction: Column > Min Height: 100vh > Max Width: 1440px
+       ======================================================================= */
+    .jcf-homepage {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+      max-width: var(--jcf-container-max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* =======================================================================
+       HERO IMAGE
+       Elementor: Container > Direction: Column > Justify: Center > Flex Grow: 1
+       Image: W:760 H:460, centrado (X:340)
+       ======================================================================= */
+    .jcf-hero {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      flex: 1;
+      padding: 159px 0 60px;
+    }
+
+    .jcf-hero__image-wrapper {
+      width: 760px;
+      max-width: calc(100% - 80px);
+      aspect-ratio: 760 / 460;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .jcf-hero__image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .jcf-hero__image-wrapper .jcf-placeholder {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* --- TABLET ---------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .jcf-hero {
+        padding-top: 120px;
+      }
+
+      .jcf-hero__image-wrapper {
+        max-width: calc(100% - 64px);
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+    /* --- MOBILE ---------------------------------------------------------- */
+    @media (max-width: 767px) {
+      .jcf-hero {
+        padding-top: 80px;
+        padding-bottom: 40px;
+      }
+
+      .jcf-hero__image-wrapper {
+        max-width: calc(100% - 48px);
+        aspect-ratio: 3 / 4;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="jcf-homepage">
+
+    <header class="jcf-header">
+      <a href="index.html" class="jcf-header__logo" aria-label="Janela com Ferrugem — Página Inicial">
+        <img src="assets/img/Asset 1.svg" alt="Janela com Ferrugem — Arquitetura com Propósito"
+          class="jcf-header__logo-img" width="131" height="71">
+      </a>
+      <div class="jcf-header__nav-wrapper">
+        <button class="jcf-header__menu-toggle" aria-label="Abrir menu" aria-expanded="false" id="menuToggle">
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
+          <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
+          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
+          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="jcf-hero">
+      <div class="jcf-hero__image-wrapper">
+        <img src="assets/img/homepage hero.jpeg" alt="Janela com Ferrugem — Arquitetura com Propósito" width="760" height="460">
+      </div>
+    </main>
+
+  </div>
+
+  <div class="jcf-menu-backdrop" id="menuBackdrop"></div>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('menuToggle');
+      const dropdown = document.getElementById('menuDropdown');
+      const backdrop = document.getElementById('menuBackdrop');
+      function openMenu() { dropdown.classList.add('is-active'); backdrop.classList.add('is-active'); toggle.setAttribute('aria-expanded', 'true'); const fl = dropdown.querySelector('a'); if (fl) fl.focus(); }
+      function closeMenu() { dropdown.classList.remove('is-active'); backdrop.classList.remove('is-active'); toggle.setAttribute('aria-expanded', 'false'); }
+      function toggleMenu() { dropdown.classList.contains('is-active') ? closeMenu() : openMenu(); }
+      toggle.addEventListener('click', toggleMenu);
+      backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dropdown.classList.contains('is-active')) { closeMenu(); toggle.focus(); } });
+    })();
+  </script>
+</body>
+
+</html>

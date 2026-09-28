@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objetos — Janela com Ferrugem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="jcf-globals.css">
+  <style>
+    /* =======================================================================
+       OBJETOS — Layout principal
+       ======================================================================= */
+    .jcf-objetos-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+      max-width: var(--jcf-container-max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* =======================================================================
+       OBJETOS — Grelha (12 Columns)
+       Col 1: Label "OBJETOS" | Cols 4–9: Grid de 3 colunas
+       ======================================================================= */
+    .jcf-objetos-section {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+      width: 100%;
+      padding: 159px 60px 60px;
+      align-items: flex-start;
+    }
+
+    .jcf-objetos-section__sidebar {
+      grid-column: 1;
+      padding-top: 4px;
+    }
+
+    .jcf-objetos-grid-container {
+      grid-column: 4 / 10;
+    }
+
+    .jcf-objetos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 24px;
+      row-gap: 50px;
+      width: 100%;
+    }
+
+    /* =======================================================================
+       OBJECT CARD
+       ======================================================================= */
+    .jcf-object-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .jcf-object-card__image-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 2px;
+      background-color: #E8E5DF;
+    }
+
+    .jcf-object-card__image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease, transform 0.4s ease;
+    }
+
+    .jcf-object-card__image-wrapper .jcf-placeholder {
+      width: 100%;
+      height: 100%;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      transition: opacity 0.3s ease, transform 0.4s ease;
+    }
+
+    .jcf-object-card:hover img,
+    .jcf-object-card:hover .jcf-placeholder {
+      opacity: 0.85;
+      transform: scale(1.02);
+    }
+
+    .jcf-object-card__name {
+      font-size: 13px;
+      color: var(--e-global-color-primary);
+      line-height: 1.4;
+      margin-top: 12px;
+      transition: opacity 0.3s ease;
+    }
+
+    .jcf-object-card:hover .jcf-object-card__name {
+      opacity: 0.6;
+    }
+
+    .jcf-object-card__status {
+      font-size: 12px;
+      color: var(--e-global-color-secondary);
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    .jcf-object-card__status--sold {
+      opacity: 0.5;
+    }
+
+    /* --- TABLET ---------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .jcf-objetos-section {
+        display: flex;
+        flex-direction: column;
+        padding: 40px 32px;
+        gap: 32px;
+      }
+
+      .jcf-objetos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 40px;
+      }
+    }
+
+    /* --- MOBILE ---------------------------------------------------------- */
+    @media (max-width: 767px) {
+      .jcf-objetos-section {
+        padding: 60px 24px 30px;
+        gap: 24px;
+      }
+
+      .jcf-objetos-grid {
+        grid-template-columns: 1fr;
+        row-gap: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="jcf-objetos-page">
+
+    <header class="jcf-header">
+      <a href="index.html" class="jcf-header__logo" aria-label="Janela com Ferrugem — Página Inicial">
+        <img src="assets/img/Asset 1.svg" alt="Janela com Ferrugem — Arquitetura com Propósito"
+          class="jcf-header__logo-img" width="131" height="71">
+      </a>
+      <div class="jcf-header__nav-wrapper">
+        <button class="jcf-header__menu-toggle" aria-label="Abrir menu" aria-expanded="false" id="menuToggle">
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
+          <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
+          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
+          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="jcf-objetos-section">
+
+      <div class="jcf-objetos-section__sidebar">
+        <span class="jcf-section-label">OBJETOS</span>
+      </div>
+
+      <div class="jcf-objetos-grid-container">
+        <div class="jcf-objetos-grid">
+
+          <a href="objeto-detalhe.html" class="jcf-object-card">
+            <div class="jcf-object-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1595351298020-038700609878?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1" width="400" height="500" loading="lazy">
+            </div>
+            <h2 class="jcf-object-card__name">Objecto 1</h2>
+          </a>
+
+          <a href="objeto-detalhe.html" class="jcf-object-card">
+            <div class="jcf-object-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 2" width="400" height="500" loading="lazy">
+            </div>
+            <h2 class="jcf-object-card__name">Objecto 2</h2>
+          </a>
+
+          <a href="objeto-detalhe.html" class="jcf-object-card">
+            <div class="jcf-object-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1607556672044-6110fc499247?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 3" width="400" height="500" loading="lazy">
+            </div>
+            <h2 class="jcf-object-card__name">Objecto 3</h2>
+          </a>
+
+          <a href="objeto-detalhe.html" class="jcf-object-card">
+            <div class="jcf-object-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1590605105526-5c08f63f89aa?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 4" width="400" height="500" loading="lazy">
+            </div>
+            <h2 class="jcf-object-card__name">Objecto 4</h2>
+          </a>
+
+          <a href="objeto-detalhe.html" class="jcf-object-card">
+            <div class="jcf-object-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 5" width="400" height="500" loading="lazy">
+            </div>
+            <h2 class="jcf-object-card__name">Objecto 5</h2>
+          </a>
+
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <div class="jcf-menu-backdrop" id="menuBackdrop"></div>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('menuToggle');
+      const dropdown = document.getElementById('menuDropdown');
+      const backdrop = document.getElementById('menuBackdrop');
+      function openMenu() { dropdown.classList.add('is-active'); backdrop.classList.add('is-active'); toggle.setAttribute('aria-expanded', 'true'); const fl = dropdown.querySelector('a'); if (fl) fl.focus(); }
+      function closeMenu() { dropdown.classList.remove('is-active'); backdrop.classList.remove('is-active'); toggle.setAttribute('aria-expanded', 'false'); }
+      function toggleMenu() { dropdown.classList.contains('is-active') ? closeMenu() : openMenu(); }
+      toggle.addEventListener('click', toggleMenu);
+      backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dropdown.classList.contains('is-active')) { closeMenu(); toggle.focus(); } });
+    })();
+  </script>
+</body>
+
+</html>

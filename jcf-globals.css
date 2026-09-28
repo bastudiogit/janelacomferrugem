@@ -1,0 +1,366 @@
+/* ==========================================================================
+   Janela com Ferrugem — CSS Global
+   Compatível com Elementor Pro (Flexbox Containers)
+   Extraído do Figma: uibZw8xK4jshquLcHWbXW1
+
+   ESTRUTURA:
+   1. Cores (Elementor Global Colors + Custom JCF)
+   2. Tipografia (Lexend, type scale, line-heights, letter-spacing)
+   3. Layout (dimensões globais)
+   4. Reset & Base
+   5. Placeholders (substitutos de imagens)
+   6. Header (logo + hamburger)
+   7. Menu Dropdown
+   8. Section Label
+   9. Responsividade — Header (Tablet + Mobile)
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. CORES
+   -------------------------------------------------------------------------- */
+:root {
+  /* Elementor Global Colors */
+  --e-global-color-primary:   #0F0F0F;  /* Texto principal, headings, ícones */
+  --e-global-color-secondary: #736E66;  /* Corpo de texto (warm gray) */
+  --e-global-color-text:      #999999;  /* Texto secundário */
+  --e-global-color-accent:    #F3E4D1;  /* Destaque / bege areia */
+
+  /* Custom Colors — JCF */
+  --jcf-color-black:          #0A0A0A;
+  --jcf-color-white:          #FFFFFF;
+  --jcf-color-border:         #D9D6D1;  /* Linhas de input / separadores */
+  --jcf-color-overlay-bg:     #FFFFFF;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. TIPOGRAFIA
+   Importar no <head>:
+   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+   -------------------------------------------------------------------------- */
+:root {
+  /* Font Families */
+  --e-global-typography-primary-font-family:   'Lexend', sans-serif;
+  --e-global-typography-secondary-font-family: 'Lexend', sans-serif;
+  --e-global-typography-text-font-family:      'Lexend', sans-serif;
+  --e-global-typography-accent-font-family:    'Lexend', sans-serif;
+
+  /* Font Weight — Lexend Light (300) em todo o projeto */
+  --jcf-font-light:   300;
+
+  /* Type Scale (extraído do Figma) */
+  --jcf-fs-menu:          36px;   /* Menu overlay links */
+  --jcf-fs-headline:      28px;   /* Títulos de página */
+  --jcf-fs-project-title: 25px;   /* Nome do projeto (detalhe) */
+  --jcf-fs-subtitle:      18px;   /* Subtítulos, lista de serviços */
+  --jcf-fs-body:          15px;   /* Corpo de texto */
+  --jcf-fs-footer-brand:  14px;   /* Footer */
+  --jcf-fs-button:        13px;   /* Texto de botão */
+  --jcf-fs-label:         12px;   /* Form labels, nomes da equipa */
+  --jcf-fs-section-title: 11px;   /* Etiquetas de secção (UPPERCASE) */
+
+  /* Line Heights */
+  --jcf-lh-menu:     1.2;
+  --jcf-lh-headline: 40px;
+  --jcf-lh-body:     26px;
+  --jcf-lh-body-alt: 24px;
+  --jcf-lh-contact:  32px;
+  --jcf-lh-services: 40px;
+
+  /* Letter Spacing */
+  --jcf-ls-menu:          8px;
+  --jcf-ls-section-title: 3px;
+  --jcf-ls-button:        2px;
+  --jcf-ls-team-name:     1px;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT
+   -------------------------------------------------------------------------- */
+:root {
+  --jcf-container-max:    1440px;
+  --jcf-content-width:    760px;
+  --jcf-content-padding:  340px;  /* (1440 - 760) / 2 */
+  --jcf-header-top:       50px;
+  --jcf-logo-width:       131px;
+  --jcf-logo-height:      71px;
+  --jcf-grid-columns:     3;
+  --jcf-grid-item-width:  280px;
+  --jcf-grid-gap:         30px;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. RESET & BASE
+   Elementor: aplicar via Additional CSS ou tema filho functions.php
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--e-global-typography-primary-font-family);
+  font-weight: var(--jcf-font-light);
+  color: var(--e-global-color-primary);
+  background-color: var(--jcf-color-white);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+/* Enforce Lexend Light (300) globalmente */
+*, *::before, *::after,
+body, h1, h2, h3, h4, h5, h6,
+p, a, span, button, input, textarea, label {
+  font-family: var(--e-global-typography-primary-font-family) !important;
+  font-weight: 300 !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. PLACEHOLDERS — Substituto de imagens durante desenvolvimento
+   Remover antes de passar para WordPress com imagens reais
+   -------------------------------------------------------------------------- */
+.jcf-placeholder {
+  background-color: #D5CFC5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #9A9488;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.jcf-placeholder--dark  { background-color: #B8B2A8; color: #8A847A; }
+.jcf-placeholder--warm  { background-color: #D1CCC2; color: #9A9488; }
+.jcf-placeholder--green { background-color: #C5CEBF; color: #8A9484; }
+.jcf-placeholder--sage  { background-color: #C5CEBF; color: #8A8484; }
+.jcf-placeholder--sand  { background-color: #CCC7BE; color: #948F86; }
+.jcf-placeholder--stone { background-color: #B8B2A8; color: #8A847A; }
+.jcf-placeholder--clay  { background-color: #C8C2B8; color: #908A80; }
+
+
+/* --------------------------------------------------------------------------
+   6. HEADER
+   Grid 12 colunas: Col 1 = Logo | Col 12 = Menu
+   Elementor: Container > Direction: Row > Justify: Space Between > Padding: 50px 60px 0
+   -------------------------------------------------------------------------- */
+.jcf-header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+  width: 100%;
+  padding: 50px 60px 0;
+  position: relative;
+  z-index: 100;
+}
+
+.jcf-header__logo {
+  grid-column: 1;
+  display: block;
+  width: 131px;
+  height: auto;
+}
+
+.jcf-header__logo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.jcf-header__nav-wrapper {
+  grid-column: 12;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 18px;
+}
+
+/* Hamburger — W:28 H:14 | linha superior: 28px | linha inferior: 16px */
+.jcf-header__menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 28px;
+  height: 14px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  position: relative;
+}
+
+.jcf-header__menu-toggle span {
+  display: block;
+  height: 1px;
+  background-color: var(--e-global-color-primary);
+}
+
+.jcf-header__menu-toggle span:first-child { width: 28px; }
+.jcf-header__menu-toggle span:last-child  { width: 16px; }
+
+
+/* --------------------------------------------------------------------------
+   7. MENU DROPDOWN
+   Posicionado em absolute relativo ao nav-wrapper
+   Alinhado ao topo do hamburger (top: 0) e à linha inferior (right: 16px)
+   -------------------------------------------------------------------------- */
+.jcf-menu-dropdown {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  width: 140px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(6px);
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.jcf-menu-dropdown.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.jcf-menu-dropdown__link {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--e-global-color-primary);
+  line-height: 1.5;
+  white-space: nowrap;
+  padding: 3px 8px;
+  margin-left: -8px;
+  border-radius: 2px;
+  background-color: transparent;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.jcf-menu-dropdown__link:hover,
+.jcf-menu-dropdown__link:focus {
+  background-color: var(--e-global-color-accent) !important;
+  color: var(--e-global-color-primary) !important;
+  opacity: 1 !important;
+}
+
+/* Backdrop invisível — fechar o dropdown ao clicar fora */
+.jcf-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 90;
+  display: none;
+}
+
+.jcf-menu-backdrop.is-active {
+  display: block;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. SECTION LABEL
+   Elementor: Heading Widget > Tag: H6
+   Lexend Light 11px, uppercase, letter-spacing 3px, #736E66
+   -------------------------------------------------------------------------- */
+.jcf-section-label {
+  font-size: var(--jcf-fs-section-title);
+  letter-spacing: var(--jcf-ls-section-title);
+  text-transform: uppercase;
+  color: var(--e-global-color-secondary);
+  line-height: 1.4;
+}
+
+
+/* --------------------------------------------------------------------------
+   9. RESPONSIVIDADE — HEADER
+   Breakpoints Elementor: Tablet ≤ 1024px | Mobile ≤ 767px
+   -------------------------------------------------------------------------- */
+
+/* --- TABLET --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .jcf-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 32px 0;
+  }
+
+  .jcf-header__logo {
+    width: 110px;
+  }
+
+  .jcf-header__nav-wrapper {
+    margin-top: 12px;
+  }
+
+  .jcf-menu-dropdown {
+    width: 130px;
+    gap: 8px;
+  }
+}
+
+/* --- MOBILE --------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .jcf-header {
+    padding: 30px 24px 0;
+  }
+
+  .jcf-header__logo {
+    width: 90px;
+  }
+
+  .jcf-header__nav-wrapper {
+    margin-top: 8px;
+  }
+
+  .jcf-header__menu-toggle {
+    width: 24px;
+    height: 12px;
+  }
+
+  .jcf-header__menu-toggle span:first-child { width: 24px; }
+  .jcf-header__menu-toggle span:last-child  { width: 14px; }
+
+  .jcf-menu-dropdown {
+    width: 120px;
+    gap: 8px;
+  }
+
+  .jcf-menu-dropdown__link {
+    font-size: 13px;
+  }
+}

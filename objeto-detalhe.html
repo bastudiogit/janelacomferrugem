@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objecto 1 — Janela com Ferrugem</title>
+
+  <!-- Google Fonts: Lexend 300, 400, 500 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Global Variables -->
+  <link rel="stylesheet" href="jcf-globals.css">
+
+  <style>
+    /* Page Outer Container */
+    .jcf-objeto-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+      max-width: var(--jcf-container-max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* OBJETO DETALHE — SECTION (12 Columns System — Igual a projeto-detalhe.html) */
+    .jcf-objeto-detalhe-section {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+      width: 100%;
+      padding: 159px 60px 60px;
+      align-items: flex-start;
+    }
+
+    /* Coluna 1: Sidebar Meta do Objeto */
+    .jcf-objeto-sidebar {
+      grid-column: 1;
+      padding-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .jcf-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      font-family: var(--e-global-typography-primary-font-family);
+      font-weight: var(--jcf-font-light);
+      font-size: var(--jcf-fs-section-title); /* 11px */
+      letter-spacing: var(--jcf-ls-section-title); /* 3px */
+      text-transform: uppercase;
+      color: var(--e-global-color-secondary);
+      padding: 3px 8px;
+      margin-left: -8px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+    .jcf-back-link:hover {
+      background-color: var(--e-global-color-accent); /* #F3E4D1 */
+      opacity: 1;
+    }
+
+    .jcf-objeto-sidebar__title {
+      font-family: var(--e-global-typography-primary-font-family);
+      font-weight: 300 !important;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--e-global-color-primary);
+      text-transform: uppercase;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .jcf-objeto-sidebar__category,
+    .jcf-objeto-sidebar__type {
+      font-family: var(--e-global-typography-primary-font-family);
+      font-weight: var(--jcf-font-light);
+      font-size: var(--jcf-fs-body); /* 15px */
+      color: var(--e-global-color-secondary);
+      line-height: 1.5;
+    }
+
+
+    /* WhatsApp CTA */
+    .jcf-objeto-sidebar__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-family: var(--e-global-typography-primary-font-family);
+      font-weight: var(--jcf-font-light);
+      font-size: var(--jcf-fs-section-title);
+      letter-spacing: var(--jcf-ls-section-title);
+      text-transform: uppercase;
+      color: var(--e-global-color-secondary);
+      white-space: nowrap;
+      padding: 6px 10px;
+      margin-left: -10px;
+      border-radius: 2px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .jcf-objeto-sidebar__cta:hover {
+      background-color: var(--e-global-color-accent);
+    }
+    .jcf-objeto-sidebar__cta svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Colunas 4 a 9: Conteúdo do Objeto */
+    .jcf-objeto-content {
+      grid-column: 4 / 10;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      padding-bottom: 60px;
+    }
+
+    /* Galeria (carrossel) */
+    .jcf-galeria {
+      width: 100%;
+      position: relative;
+    }
+    .jcf-galeria__track-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .jcf-galeria__track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .jcf-galeria__slide {
+      flex: 0 0 100%;
+      aspect-ratio: 760 / 460;
+    }
+    .jcf-galeria__slide .jcf-placeholder {
+      width: 100%;
+      height: 100%;
+    }
+    .jcf-galeria__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.85);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      padding: 0;
+      font-size: 18px;
+      color: var(--e-global-color-primary);
+      transition: background 0.2s ease, opacity 0.2s ease;
+      opacity: 0.5;
+      z-index: 10;
+    }
+    .jcf-galeria__btn:hover { background: rgba(255,255,255,1); opacity: 1; }
+    .jcf-galeria__btn--prev { left: 16px; }
+    .jcf-galeria__btn--next { right: 16px; }
+    .jcf-galeria__dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .jcf-galeria__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--jcf-color-border);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s ease;
+    }
+    .jcf-galeria__dot.is-active { background: var(--e-global-color-primary); }
+
+
+    .jcf-galeria__slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Descrição */
+    .jcf-objeto-descricao {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 580px;
+    }
+    .jcf-objeto-descricao__text {
+      font-family: var(--e-global-typography-primary-font-family);
+      font-weight: var(--jcf-font-light);
+      font-size: var(--jcf-fs-body);
+      color: var(--e-global-color-secondary);
+      line-height: var(--jcf-lh-body);
+    }
+
+    /* Ficha Técnica */
+    .jcf-objeto-ficha {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .jcf-objeto-ficha__row {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      align-items: baseline;
+    }
+    .jcf-objeto-ficha__label {
+      font-family: var(--e-global-typography-primary-font-family);
+      font-weight: var(--jcf-font-light);
+      font-size: var(--jcf-fs-section-title);
+      letter-spacing: var(--jcf-ls-section-title);
+      text-transform: uppercase;
+      color: var(--e-global-color-secondary);
+      flex-shrink: 0;
+      width: 140px;
+    }
+    .jcf-objeto-ficha__value {
+      font-family: var(--e-global-typography-primary-font-family);
+      font-weight: var(--jcf-font-light);
+      font-size: var(--jcf-fs-body);
+      color: var(--e-global-color-secondary);
+      line-height: 1.4;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .jcf-objeto-detalhe-section { padding: 40px 60px 40px; }
+      .jcf-objeto-sidebar { grid-column: 1 / 4; }
+      .jcf-objeto-content { grid-column: 4 / 13; }
+    }
+    @media (max-width: 767px) {
+      .jcf-objeto-detalhe-section { display: flex; flex-direction: column; padding: 40px 24px 30px; gap: 40px; }
+      .jcf-objeto-sidebar { width: 100%; }
+      .jcf-objeto-content { width: 100%; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="jcf-objeto-page">
+    <header class="jcf-header">
+      <a href="index.html" class="jcf-header__logo" aria-label="Janela com Ferrugem — Página Inicial">
+        <img src="assets/img/Asset 1.svg" alt="Janela com Ferrugem — Arquitetura com Propósito" class="jcf-header__logo-img" width="131" height="71">
+      </a>
+      <div class="jcf-header__nav-wrapper">
+        <button class="jcf-header__menu-toggle" aria-label="Abrir menu" aria-expanded="false" id="menuToggle">
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
+          <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
+          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
+          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- OBJETO DETALHE SECTION -->
+    <main class="jcf-objeto-detalhe-section">
+
+      <!-- COLUNA 1: Sidebar Meta -->
+      <aside class="jcf-objeto-sidebar">
+        <a href="objetos.html" class="jcf-back-link">&#8592; OBJETOS</a>
+        <h1 class="jcf-objeto-sidebar__title">Objecto 1</h1>
+        <span class="jcf-objeto-sidebar__category">Mobiliário</span>
+        <span class="jcf-objeto-sidebar__type">Peça de Autor</span>
+        <a href="https://wa.me/351910758956" target="_blank" rel="noopener" class="jcf-objeto-sidebar__cta" aria-label="Contactar via WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Peça única
+        </a>
+      </aside>
+
+      <!-- COLUNAS 4 A 9: Conteúdo do Objeto -->
+      <article class="jcf-objeto-content">
+
+        <!-- Galeria (carrossel) -->
+        <section class="jcf-galeria" aria-label="Galeria de imagens">
+          <div class="jcf-galeria__track-wrapper">
+            <div class="jcf-galeria__track" id="galeriaTrack">
+              <div class="jcf-galeria__slide">
+                <img src="https://images.unsplash.com/photo-1595351298020-038700609878?w=760&h=460&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 1" width="760" height="460" loading="lazy">
+              </div>
+              <div class="jcf-galeria__slide">
+                <img src="https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?w=760&h=460&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 2" width="760" height="460" loading="lazy">
+              </div>
+              <div class="jcf-galeria__slide">
+                <img src="https://images.unsplash.com/photo-1607556672044-6110fc499247?w=760&h=460&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 3" width="760" height="460" loading="lazy">
+              </div>
+            </div>
+            <button class="jcf-galeria__btn jcf-galeria__btn--prev" id="galeriaPrev" aria-label="Vista anterior">&#8592;</button>
+            <button class="jcf-galeria__btn jcf-galeria__btn--next" id="galeriaNext" aria-label="Próxima vista">&#8594;</button>
+          </div>
+          <div class="jcf-galeria__dots" id="galeriaDots"></div>
+        </section>
+
+        <!-- Descrição -->
+        <section class="jcf-objeto-descricao">
+          <p class="jcf-objeto-descricao__text">Peça de mobiliário desenhada a partir de materiais recuperados, pensada para integrar espaços de leitura e contemplação. Cada peça é única e produzida artesanalmente.</p>
+        </section>
+
+        <!-- Ficha Técnica -->
+        <section class="jcf-objeto-ficha">
+          <div class="jcf-objeto-ficha__row">
+            <span class="jcf-objeto-ficha__label">Materiais</span>
+            <span class="jcf-objeto-ficha__value">Madeira de carvalho, ferro</span>
+          </div>
+          <div class="jcf-objeto-ficha__row">
+            <span class="jcf-objeto-ficha__label">Categoria</span>
+            <span class="jcf-objeto-ficha__value">Mobiliário</span>
+          </div>
+        </section>
+
+      </article>
+
+    </main>
+
+  </div>
+
+  <div class="jcf-menu-backdrop" id="menuBackdrop"></div>
+
+  <script>
+    (function() {
+      // Menu
+      const toggle = document.getElementById('menuToggle');
+      const dropdown = document.getElementById('menuDropdown');
+      const backdrop = document.getElementById('menuBackdrop');
+      function openMenu() { dropdown.classList.add('is-active'); backdrop.classList.add('is-active'); toggle.setAttribute('aria-expanded', 'true'); const fl = dropdown.querySelector('a'); if (fl) fl.focus(); }
+      function closeMenu() { dropdown.classList.remove('is-active'); backdrop.classList.remove('is-active'); toggle.setAttribute('aria-expanded', 'false'); }
+      function toggleMenu() { dropdown.classList.contains('is-active') ? closeMenu() : openMenu(); }
+      toggle.addEventListener('click', toggleMenu);
+      backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && dropdown.classList.contains('is-active')) { closeMenu(); toggle.focus(); } });
+
+      // Galeria Carrossel
+      const track = document.getElementById('galeriaTrack');
+      const dotsContainer = document.getElementById('galeriaDots');
+      const slides = track ? track.querySelectorAll('.jcf-galeria__slide') : [];
+      let current = 0;
+
+      if (slides.length > 0) {
+        slides.forEach(function(_, i) {
+          const dot = document.createElement('button');
+          dot.className = 'jcf-galeria__dot' + (i === 0 ? ' is-active' : '');
+          dot.setAttribute('aria-label', 'Vista ' + (i + 1));
+          dot.addEventListener('click', function() { goTo(i); });
+          dotsContainer.appendChild(dot);
+        });
+
+        function goTo(idx) {
+          current = (idx + slides.length) % slides.length;
+          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+          dotsContainer.querySelectorAll('.jcf-galeria__dot').forEach(function(d, i) {
+            d.classList.toggle('is-active', i === current);
+          });
+        }
+
+        document.getElementById('galeriaPrev').addEventListener('click', function() { goTo(current - 1); });
+        document.getElementById('galeriaNext').addEventListener('click', function() { goTo(current + 1); });
+      }
+    })();
+  </script>
+</body>
+</html>
