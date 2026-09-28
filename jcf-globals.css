@@ -172,9 +172,11 @@ p, a, span, button, input, textarea, label {
   grid-template-columns: repeat(12, 1fr);
   column-gap: 24px;
   width: 100%;
-  padding: 50px 60px 0;
-  position: relative;
+  padding: 30px 60px 20px;
+  position: sticky;
+  top: 0;
   z-index: 100;
+  background-color: var(--jcf-color-white);
 }
 
 .jcf-header__logo {
@@ -316,7 +318,7 @@ p, a, span, button, input, textarea, label {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 40px 32px 0;
+    padding: 24px 32px 16px;
   }
 
   .jcf-header__logo {
@@ -336,7 +338,7 @@ p, a, span, button, input, textarea, label {
 /* --- MOBILE --------------------------------------------------------------- */
 @media (max-width: 767px) {
   .jcf-header {
-    padding: 30px 24px 0;
+    padding: 20px 24px 14px;
   }
 
   .jcf-header__logo {
