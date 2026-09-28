@@ -21,38 +21,43 @@
     .jcf-homepage {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      height: 100vh;
+      height: 100dvh;
       width: 100%;
       max-width: var(--jcf-container-max);
       margin: 0 auto;
       position: relative;
+      overflow: hidden;
     }
 
     /* =======================================================================
        HERO IMAGE
-       Elementor: Container > Direction: Column > Justify: Center > Flex Grow: 1
-       Image: W:760 H:460, centrado (X:340)
+       Preenche o espaço restante após o header — sem scroll.
+       A imagem adapta-se ao viewport mantendo aspect-ratio via object-fit.
        ======================================================================= */
     .jcf-hero {
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       width: 100%;
       flex: 1;
-      padding: 159px 0 60px;
+      min-height: 0;
+      padding: 40px 0;
     }
 
     .jcf-hero__image-wrapper {
       width: 760px;
       max-width: calc(100% - 80px);
-      aspect-ratio: 760 / 460;
+      max-height: 100%;
       overflow: hidden;
       border-radius: 2px;
     }
 
     .jcf-hero__image-wrapper img {
+      display: block;
       width: 100%;
       height: 100%;
+      max-height: 100%;
       object-fit: cover;
     }
 
@@ -64,25 +69,22 @@
     /* --- TABLET ---------------------------------------------------------- */
     @media (max-width: 1024px) {
       .jcf-hero {
-        padding-top: 120px;
+        padding: 30px 0;
       }
 
       .jcf-hero__image-wrapper {
         max-width: calc(100% - 64px);
-        aspect-ratio: 4 / 3;
       }
     }
 
     /* --- MOBILE ---------------------------------------------------------- */
     @media (max-width: 767px) {
       .jcf-hero {
-        padding-top: 80px;
-        padding-bottom: 40px;
+        padding: 20px 0;
       }
 
       .jcf-hero__image-wrapper {
         max-width: calc(100% - 48px);
-        aspect-ratio: 3 / 4;
       }
     }
   </style>
