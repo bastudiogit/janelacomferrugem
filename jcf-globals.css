@@ -14,8 +14,6 @@
    8. Section Label
    9. Responsividade — Header (Tablet + Mobile)
    ========================================================================== */
-
-
 /* --------------------------------------------------------------------------
    1. CORES
    -------------------------------------------------------------------------- */
@@ -32,8 +30,6 @@
   --jcf-color-border:         #D9D6D1;  /* Linhas de input / separadores */
   --jcf-color-overlay-bg:     #FFFFFF;
 }
-
-
 /* --------------------------------------------------------------------------
    2. TIPOGRAFIA
    Importar no <head>:
@@ -74,8 +70,6 @@
   --jcf-ls-button:        2px;
   --jcf-ls-team-name:     1px;
 }
-
-
 /* --------------------------------------------------------------------------
    3. LAYOUT
    -------------------------------------------------------------------------- */
@@ -90,8 +84,6 @@
   --jcf-grid-item-width:  280px;
   --jcf-grid-gap:         30px;
 }
-
-
 /* --------------------------------------------------------------------------
    4. RESET & BASE
    Elementor: aplicar via Additional CSS ou tema filho functions.php
@@ -117,7 +109,6 @@ body {
   background-color: var(--jcf-color-white);
   overflow-x: hidden;
 }
-
 a {
   text-decoration: none;
   color: inherit;
@@ -135,8 +126,6 @@ p, a, span, button, input, textarea, label {
   font-family: var(--e-global-typography-primary-font-family) !important;
   font-weight: 300 !important;
 }
-
-
 /* --------------------------------------------------------------------------
    5. PLACEHOLDERS — Substituto de imagens durante desenvolvimento
    Remover antes de passar para WordPress com imagens reais
@@ -160,8 +149,6 @@ p, a, span, button, input, textarea, label {
 .jcf-placeholder--sand  { background-color: #CCC7BE; color: #948F86; }
 .jcf-placeholder--stone { background-color: #B8B2A8; color: #8A847A; }
 .jcf-placeholder--clay  { background-color: #C8C2B8; color: #908A80; }
-
-
 /* --------------------------------------------------------------------------
    6. HEADER
    Grid 12 colunas: Col 1 = Logo | Col 12 = Menu
@@ -225,8 +212,6 @@ p, a, span, button, input, textarea, label {
 
 .jcf-header__menu-toggle span:first-child { width: 28px; }
 .jcf-header__menu-toggle span:last-child  { width: 16px; }
-
-
 /* --------------------------------------------------------------------------
    7. MENU DROPDOWN
    Posicionado em absolute relativo ao nav-wrapper
@@ -290,8 +275,6 @@ p, a, span, button, input, textarea, label {
 .jcf-menu-backdrop.is-active {
   display: block;
 }
-
-
 /* --------------------------------------------------------------------------
    8. SECTION LABEL
    Elementor: Heading Widget > Tag: H6
@@ -304,8 +287,6 @@ p, a, span, button, input, textarea, label {
   color: var(--e-global-color-secondary);
   line-height: 1.4;
 }
-
-
 /* --------------------------------------------------------------------------
    9. RESPONSIVIDADE — HEADER
    Breakpoints Elementor: Tablet ≤ 1024px | Mobile ≤ 767px
@@ -365,4 +346,15 @@ p, a, span, button, input, textarea, label {
   .jcf-menu-dropdown__link {
     font-size: 13px;
   }
+}
+
+/* =========================================================================
+   HIDE SCROLLBAR — Scroll funcional sem barra visível
+   ========================================================================= */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
 }
