@@ -341,6 +341,17 @@
 
   </div>
 
+  <!-- Lightbox -->
+  <div class="jcf-lightbox" id="lightbox">
+    <button class="jcf-lightbox__close" id="lightboxClose" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <button class="jcf-lightbox__btn jcf-lightbox__btn--prev" id="lightboxPrev" aria-label="Anterior">&#8592;</button>
+    <button class="jcf-lightbox__btn jcf-lightbox__btn--next" id="lightboxNext" aria-label="Seguinte">&#8594;</button>
+    <img class="jcf-lightbox__img" id="lightboxImg" src="" alt="">
+    <span class="jcf-lightbox__counter" id="lightboxCounter"></span>
+  </div>
+
   <div class="jcf-menu-backdrop" id="menuBackdrop"></div>
 
   <script>
@@ -381,6 +392,47 @@
 
         document.getElementById('galeriaPrev').addEventListener('click', function() { goTo(current - 1); });
         document.getElementById('galeriaNext').addEventListener('click', function() { goTo(current + 1); });
+
+      // Lightbox
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const lightboxCounter = document.getElementById("lightboxCounter");
+      const allImages = [];
+      let lbCurrent = 0;
+
+      document.querySelectorAll(".jcf-galeria__slide img").forEach(function(img) {
+        allImages.push({ src: img.src, alt: img.alt });
+        img.addEventListener("click", function() { openLightbox(allImages.indexOf(allImages.find(function(i) { return i.src === img.src; }))); });
+      });
+
+      function openLightbox(idx) {
+        lbCurrent = idx;
+        updateLightbox();
+        lightbox.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      function updateLightbox() {
+        lightboxImg.src = allImages[lbCurrent].src;
+        lightboxImg.alt = allImages[lbCurrent].alt;
+        lightboxCounter.textContent = (lbCurrent + 1) + " / " + allImages.length;
+      }
+
+      document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+      document.getElementById("lightboxPrev").addEventListener("click", function(e) { e.stopPropagation(); lbCurrent = (lbCurrent - 1 + allImages.length) % allImages.length; updateLightbox(); });
+      document.getElementById("lightboxNext").addEventListener("click", function(e) { e.stopPropagation(); lbCurrent = (lbCurrent + 1) % allImages.length; updateLightbox(); });
+      lightbox.addEventListener("click", function(e) { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener("keydown", function(e) {
+        if (!lightbox.classList.contains("is-active")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") { lbCurrent = (lbCurrent - 1 + allImages.length) % allImages.length; updateLightbox(); }
+        if (e.key === "ArrowRight") { lbCurrent = (lbCurrent + 1) % allImages.length; updateLightbox(); }
+      });
       }
     })();
   </script>
