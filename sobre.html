@@ -21,9 +21,20 @@
     .jcf-sobre {
       display: flex;
       flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+      width: 100%;
       max-width: var(--jcf-container-max);
       margin: 0 auto;
       position: relative;
+      overflow: hidden;
+    }
+
+    /* Conteúdo scrollável abaixo do header */
+    .jcf-sobre-content {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
     }
 
     /* =======================================================================
@@ -35,7 +46,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 159px 0 60px;
+      padding: 40px 0 60px;
     }
 
     .jcf-team-photo__wrapper {
@@ -190,7 +201,7 @@
     /* --- MOBILE ---------------------------------------------------------- */
     @media (max-width: 767px) {
       .jcf-team-photo {
-        padding: 100px 0 40px;
+        padding: 20px 0 40px;
       }
 
       .jcf-team-photo__wrapper {
@@ -252,6 +263,7 @@
       </div>
     </header>
 
+    <div class="jcf-sobre-content">
     <section class="jcf-team-photo">
       <div class="jcf-team-photo__wrapper">
         <div class="jcf-placeholder jcf-placeholder--dark">Foto Equipa — 760 × 460</div>
@@ -314,6 +326,7 @@
         <li class="jcf-servicos__item"><a href="servico-produto.html" class="jcf-servicos__link">Produto</a></li>
       </ul>
     </section>
+    </div>
 
   </div>
 

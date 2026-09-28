@@ -21,11 +21,13 @@
     .jcf-projetos-page {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      height: 100vh;
+      height: 100dvh;
       width: 100%;
       max-width: var(--jcf-container-max);
       margin: 0 auto;
       position: relative;
+      overflow: hidden;
     }
 
     /* =======================================================================
@@ -37,8 +39,11 @@
       grid-template-columns: repeat(12, 1fr);
       column-gap: 24px;
       width: 100%;
-      padding: 159px 60px 60px;
+      padding: 40px 60px 60px;
       align-items: flex-start;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
     }
 
     .jcf-projetos-section__sidebar {
