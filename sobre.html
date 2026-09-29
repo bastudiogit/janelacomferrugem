@@ -138,6 +138,42 @@
       color: var(--e-global-color-secondary);
     }
 
+
+    /* =======================================================================
+       CONVITE — CTA natural
+       Padding: 60px 340px (alinhado com quem-somos e equipa)
+       ======================================================================= */
+    .jcf-convite {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 60px var(--jcf-content-padding) 0;
+    }
+
+    .jcf-convite__text {
+      font-size: var(--jcf-fs-body);
+      line-height: var(--jcf-lh-body);
+      color: var(--e-global-color-secondary);
+    }
+
+    .jcf-convite__link {
+      font-size: var(--jcf-fs-body);
+      line-height: var(--jcf-lh-body);
+      color: var(--e-global-color-primary);
+      text-decoration: none;
+      display: inline-block;
+      align-self: flex-start;
+      padding: 3px 8px;
+      margin-left: -8px;
+      border-radius: 2px;
+      background-color: transparent;
+      transition: background-color 0.2s ease;
+    }
+
+    .jcf-convite__link:hover {
+      background-color: var(--e-global-color-accent);
+    }
+
     /* =======================================================================
        SERVIÇOS — Sem fundo, conteúdo centrado
        ======================================================================= */
@@ -194,17 +230,16 @@
         padding: 60px 60px 0;
       }
 
+      .jcf-convite {
+        padding: 60px 60px 0;
+      }
+
       .jcf-member__photo {
         width: 260px;
         min-width: 260px;
         height: 330px;
       }
     }
-
-
-      .jcf-convite {
-        padding: 60px 60px 0;
-      }
 
     /* --- MOBILE ---------------------------------------------------------- */
     @media (max-width: 767px) {
@@ -329,9 +364,9 @@
     </section>
 
     <section class="jcf-convite">
-      <p class="jcf-convite__text">Cada projeto que fazemos nasce de uma conversa — do que imagina, do que precisa, do que o lugar pede. Não trabalhamos com soluções pré-feitas. Desenhamos à medida, com o tempo e a atenção que cada ideia merece.</p>
-      <p class="jcf-convite__text">Se tem um terreno, uma casa para reabilitar, um espaço para transformar — ou apenas uma ideia que ainda não sabe bem como concretizar — fale connosco. O orçamento é sem compromisso.</p>
-      <a href="contacto.html" class="jcf-convite__link">Falar com o atelier</a>
+      <p class="jcf-convite__text">Cada projeto que fazemos nasce de uma conversa. Do que imagina, do que precisa, do que o lugar pede. Não trabalhamos com soluções pré-feitas. Desenhamos à medida, com o tempo e a atenção que cada ideia merece.</p>
+      <p class="jcf-convite__text">Se tem um terreno, uma casa para reabilitar, um espaço para transformar ou apenas uma ideia que ainda não sabe bem como concretizar, fale connosco. O orçamento é sem compromisso.</p>
+      <a href="contacto.html" class="jcf-convite__link">Entre em contacto</a>
     </section>
 
     <section class="jcf-servicos">
