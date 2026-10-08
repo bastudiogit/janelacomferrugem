@@ -35,10 +35,11 @@
        ======================================================================= */
     .jcf-projeto-detalhe-section {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
+      /* Sidebar | coluna principal (mesma largura da hero da homepage) | margem */
+      grid-template-columns: minmax(0, 1fr) var(--jcf-grid-main) minmax(0, 1fr);
+      column-gap: 0;
       width: 100%;
-      padding: 100px 60px 60px;
+      padding: var(--jcf-content-top) 60px 60px;
       align-items: flex-start;
       flex: 1;
       min-height: 0;
@@ -48,6 +49,7 @@
     /* Coluna 1: Sidebar Meta */
     .jcf-projeto-sidebar {
       grid-column: 1;
+      padding-right: 24px;
       padding-top: 4px;
       display: flex;
       flex-direction: column;
@@ -67,7 +69,9 @@
       margin-left: -8px;
       border-radius: 2px;
       margin-bottom: 12px;
-      transition: background-color 0.2s ease, opacity 0.2s ease;
+      transition: background-color 0.2s ease;
+      width: fit-content;
+      align-self: flex-start;
     }
 
     .jcf-back-link:hover {
@@ -93,7 +97,7 @@
 
     /* Colunas 4–9: Conteúdo */
     .jcf-projeto-content {
-      grid-column: 4 / 10;
+      grid-column: 2;
       display: flex;
       flex-direction: column;
       gap: 60px;
@@ -267,7 +271,7 @@
       .jcf-projeto-detalhe-section {
         display: flex;
         flex-direction: column;
-        padding: 60px 32px;
+        padding: var(--jcf-content-top) 32px 60px;
         gap: 32px;
       }
 
@@ -279,7 +283,7 @@
     /* --- MOBILE ---------------------------------------------------------- */
     @media (max-width: 767px) {
       .jcf-projeto-detalhe-section {
-        padding: 40px 24px 30px;
+        padding: var(--jcf-content-top) 24px 30px;
         gap: 24px;
       }
     }
@@ -300,10 +304,11 @@
           <span></span>
         </button>
         <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="quem-somos.html" class="jcf-menu-dropdown__link">Quem Somos</a>
+          <a href="o-que-fazemos.html" class="jcf-menu-dropdown__link">O Que Fazemos</a>
           <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
           <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
-          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
-          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+          <a href="contactos.html" class="jcf-menu-dropdown__link">Contactos</a>
         </nav>
       </div>
     </header>
@@ -322,9 +327,9 @@
         <section class="jcf-galeria" aria-label="Galeria de imagens">
           <div class="jcf-galeria__track-wrapper">
             <div class="jcf-galeria__track" id="galeriaTrack">
-              <div class="jcf-galeria__slide"><img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=760&h=460&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira — Vista 1" width="760" height="460" loading="lazy"></div>
-              <div class="jcf-galeria__slide"><img src="https://images.unsplash.com/photo-1628624747186-a941c476b7ef?w=760&h=460&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira — Vista 2" width="760" height="460" loading="lazy"></div>
-              <div class="jcf-galeria__slide"><img src="https://images.unsplash.com/photo-1647579350413-a6ada4e480ed?w=760&h=460&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira — Vista 3" width="760" height="460" loading="lazy"></div>
+              <div class="jcf-galeria__slide"><img src="https://images.unsplash.com/photo-1782305410937-805e926bf442?w=760&h=460&fit=crop&crop=entropy&auto=format&q=80" data-full="https://images.unsplash.com/photo-1782305410937-805e926bf442?w=2400&h=1453&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira — Vista 1" width="760" height="460" loading="lazy"></div>
+              <div class="jcf-galeria__slide"><img src="https://images.unsplash.com/photo-1769490315068-d001b6bfc7d4?w=760&h=460&fit=crop&crop=entropy&auto=format&q=80" data-full="https://images.unsplash.com/photo-1769490315068-d001b6bfc7d4?w=2400&h=1453&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira — Vista 2" width="760" height="460" loading="lazy"></div>
+              <div class="jcf-galeria__slide"><img src="https://images.unsplash.com/photo-1646935239823-85952f60d307?w=760&h=460&fit=crop&crop=entropy&auto=format&q=80" data-full="https://images.unsplash.com/photo-1646935239823-85952f60d307?w=2400&h=1453&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira — Vista 3" width="760" height="460" loading="lazy"></div>
             </div>
             <button class="jcf-galeria__btn jcf-galeria__btn--prev" id="galeriaPrev" aria-label="Imagem anterior">&#8592;</button>
             <button class="jcf-galeria__btn jcf-galeria__btn--next" id="galeriaNext" aria-label="Próxima imagem">&#8594;</button>
@@ -340,7 +345,7 @@
         <section class="jcf-projeto-perspetiva">
           <span class="jcf-projeto-perspetiva__label">Perspetiva</span>
           <div class="jcf-projeto-perspetiva__image">
-            <img src="https://images.unsplash.com/photo-1706808849780-7a04fbac83ef?w=760&h=460&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira — Perspetiva" width="760" height="460" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1774516534097-76eb46de7229?w=760&h=460&fit=crop&crop=entropy&auto=format&q=80" data-full="https://images.unsplash.com/photo-1774516534097-76eb46de7229?w=2400&h=1453&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira — Perspetiva" width="760" height="460" loading="lazy">
           </div>
         </section>
 
@@ -442,14 +447,18 @@
 
       // Collect gallery images
       document.querySelectorAll(".jcf-galeria__slide img").forEach(function(img) {
-        allImages.push({ src: img.src, alt: img.alt });
-        img.addEventListener("click", function() { openLightbox(allImages.indexOf(allImages.find(function(i) { return i.src === img.src; }))); });
+        const idx = allImages.length;
+        // data-full: versão em alta resolução para o lightbox (fallback: src)
+        allImages.push({ src: img.dataset.full || img.src, alt: img.alt });
+        img.addEventListener("click", function() { openLightbox(idx); });
       });
 
       // Collect perspetiva image
       document.querySelectorAll(".jcf-projeto-perspetiva__image img").forEach(function(img) {
-        allImages.push({ src: img.src, alt: img.alt });
-        img.addEventListener("click", function() { openLightbox(allImages.indexOf(allImages.find(function(i) { return i.src === img.src; }))); });
+        const idx = allImages.length;
+        // data-full: versão em alta resolução para o lightbox (fallback: src)
+        allImages.push({ src: img.dataset.full || img.src, alt: img.alt });
+        img.addEventListener("click", function() { openLightbox(idx); });
       });
 
       function openLightbox(idx) {

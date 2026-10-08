@@ -32,22 +32,25 @@
 
     /* =======================================================================
        HERO IMAGE
-       Preenche o espaço restante após o header — sem scroll.
+       Começa à mesma distância do header que o conteúdo das outras páginas — sem scroll.
        A imagem adapta-se ao viewport mantendo aspect-ratio via object-fit.
        ======================================================================= */
     .jcf-hero {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       width: 100%;
       flex: 1;
       min-height: 0;
-      padding: 40px 0;
+      /* Topo igual ao das restantes páginas (--jcf-content-top) */
+      padding: var(--jcf-content-top) 0 40px;
     }
 
+    /* Largura: 960px (--jcf-content-width), ocupa o espaço entre o logo e o menu.
+       Esta imagem define a coluna de conteúdo de todo o site. */
     .jcf-hero__image-wrapper {
-      width: 760px;
-      max-width: calc(100% - 80px);
+      width: var(--jcf-content-width);
+      max-width: calc(100% - 2 * var(--jcf-content-min-margin));
       max-height: 100%;
       overflow: hidden;
       border-radius: 2px;
@@ -69,7 +72,7 @@
     /* --- TABLET ---------------------------------------------------------- */
     @media (max-width: 1024px) {
       .jcf-hero {
-        padding: 30px 0;
+        padding: var(--jcf-content-top) 0 30px;
       }
 
       .jcf-hero__image-wrapper {
@@ -80,7 +83,7 @@
     /* --- MOBILE ---------------------------------------------------------- */
     @media (max-width: 767px) {
       .jcf-hero {
-        padding: 20px 0;
+        padding: var(--jcf-content-top) 0 20px;
       }
 
       .jcf-hero__image-wrapper {
@@ -106,17 +109,18 @@
           <span></span>
         </button>
         <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="quem-somos.html" class="jcf-menu-dropdown__link">Quem Somos</a>
+          <a href="o-que-fazemos.html" class="jcf-menu-dropdown__link">O Que Fazemos</a>
           <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
           <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
-          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
-          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+          <a href="contactos.html" class="jcf-menu-dropdown__link">Contactos</a>
         </nav>
       </div>
     </header>
 
     <main class="jcf-hero">
       <div class="jcf-hero__image-wrapper">
-        <img src="assets/img/homepage-hero.jpg" alt="Janela com Ferrugem — Arquitetura com Propósito" width="760" height="460">
+        <img src="assets/img/homepage-hero.jpg" alt="Janela com Ferrugem — Arquitetura com Propósito" width="960" height="581">
       </div>
     </main>
 

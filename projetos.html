@@ -30,15 +30,16 @@
     }
 
     /* =======================================================================
-       PROJETOS — Grelha (12 Columns)
-       Col 1: Label "PROJETOS" | Cols 4–9: Grid de 3 colunas
+       PROJETOS — Grelha
+       Sidebar: Label "PROJETOS" | Coluna principal (960px): Grid de 3 colunas
        ======================================================================= */
     .jcf-projetos-section {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
+      /* Sidebar | coluna principal (mesma largura da hero da homepage) | margem */
+      grid-template-columns: minmax(0, 1fr) var(--jcf-grid-main) minmax(0, 1fr);
+      column-gap: 0;
       width: 100%;
-      padding: 100px 60px 60px;
+      padding: var(--jcf-content-top) 60px 60px;
       align-items: flex-start;
       flex: 1;
       min-height: 0;
@@ -47,11 +48,12 @@
 
     .jcf-projetos-section__sidebar {
       grid-column: 1;
+      padding-right: 24px;
       padding-top: 4px;
     }
 
     .jcf-projetos-grid-container {
-      grid-column: 4 / 10;
+      grid-column: 2;
     }
 
     .jcf-projetos-grid {
@@ -118,7 +120,7 @@
       .jcf-projetos-section {
         display: flex;
         flex-direction: column;
-        padding: 60px 32px;
+        padding: var(--jcf-content-top) 32px 60px;
         gap: 32px;
       }
 
@@ -131,7 +133,7 @@
     /* --- MOBILE ---------------------------------------------------------- */
     @media (max-width: 767px) {
       .jcf-projetos-section {
-        padding: 60px 24px 30px;
+        padding: var(--jcf-content-top) 24px 30px;
         gap: 24px;
       }
 
@@ -162,10 +164,11 @@
           <span></span>
         </button>
         <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="quem-somos.html" class="jcf-menu-dropdown__link">Quem Somos</a>
+          <a href="o-que-fazemos.html" class="jcf-menu-dropdown__link">O Que Fazemos</a>
           <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
           <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
-          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
-          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+          <a href="contactos.html" class="jcf-menu-dropdown__link">Contactos</a>
         </nav>
       </div>
     </header>
@@ -181,119 +184,119 @@
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1782305410937-805e926bf442?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa da Ribeira" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Casa da Ribeira</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1723110994499-df46435aa4b3?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Moradia Famalicão" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1683020651549-c828fbf4c734?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Moradia Famalicão" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Moradia Famalicão</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1628624747186-a941c476b7ef?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa Minho" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1785603097626-097285b5b0a5?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa Minho" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Casa Minho</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1543071293-d91175a68672?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Reabilitação Centro" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1769060686975-6d3c4c54948a?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Reabilitação Centro" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Reabilitação Centro</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1671621556339-d833f511ab5d?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa Cóvado" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1767464951404-6f5ebe6ead57?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa Cóvado" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Casa Cóvado</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1706164971302-e30c0640cc3b?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa do Pátio" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1571272276705-e1110d7c7afb?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa do Pátio" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Casa do Pátio</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1633354747567-e0682586f082?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Intervenção Rural" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1775482080528-0e5d5629c675?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Intervenção Rural" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Intervenção Rural</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1686164748261-33e13eef70b6?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa do Campo" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1787672358297-488cbaf2aaa3?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa do Campo" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Casa do Campo</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1684691376857-5dfb87f6bc65?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Espaço Comercial Braga" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1563724680425-560215e83057?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Espaço Comercial Braga" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Espaço Comercial Braga</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1768200498972-fd56353d73fc?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Habitação Neiva" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1766603636774-5f328e0da870?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Habitação Neiva" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Habitação Neiva</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1627141234469-24711efb373c?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Reabilitação Monte" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1786516511102-07cdbc8ccf5b?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Reabilitação Monte" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Reabilitação Monte</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1558969763-1e911dcd91e6?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Moradia Serra" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1635356200963-544fbe261517?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Moradia Serra" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Moradia Serra</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1706808849780-7a04fbac83ef?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Habitação Vila" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1762602301825-33c9f66a7baa?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Habitação Vila" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Habitação Vila</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1647579350413-a6ada4e480ed?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa do Lago" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1730170788248-c64b24c1bbb1?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Casa do Lago" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Casa do Lago</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1766603636700-e9d80473f40f?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Quinta das Oliveiras" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1781433942914-9e58e6ce366e?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Quinta das Oliveiras" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Quinta das Oliveiras</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1718893389568-22a2a039998c?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Pavilhão Rural" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1777574194222-018c3f3fbd7b?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Pavilhão Rural" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Pavilhão Rural</h2>
           </a>
 
           <a href="projeto-detalhe.html" class="jcf-project-card">
             <div class="jcf-project-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1696237461860-630be53f179c?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Atelier Góios" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1776483751775-36ca104e7349?w=400&h=500&fit=crop&crop=entropy&auto=format&q=80" alt="Atelier Góios" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-project-card__title">Atelier Góios</h2>
           </a>

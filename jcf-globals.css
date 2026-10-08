@@ -75,14 +75,31 @@
    -------------------------------------------------------------------------- */
 :root {
   --jcf-container-max:    1440px;
-  --jcf-content-width:    760px;
-  --jcf-content-padding:  340px;  /* (1440 - 760) / 2 */
+  /* Coluna de conteúdo do site, definida pela imagem hero da homepage.
+     Todas as páginas usam esta largura e as mesmas margens laterais. */
+  --jcf-content-width:      960px;  /* largura da imagem hero */
+  --jcf-content-min-margin: 200px;  /* margem lateral mínima (desktop) */
+  /* Padding lateral para secções que ocupam a largura total do container:
+     a 1440px dá 240px de cada lado ((1440 - 960) / 2) */
+  --jcf-content-padding:  max(var(--jcf-content-min-margin), calc((100% - var(--jcf-content-width)) / 2));
+  /* Largura da coluna principal dentro das grelhas com padding lateral de 60px
+     (projetos, objetos, contactos, detalhes, serviços) */
+  --jcf-grid-main:        min(var(--jcf-content-width), 100% - 2 * (var(--jcf-content-min-margin) - 60px));
   --jcf-header-top:       50px;
+  /* Distância entre o header e o início do conteúdo/imagem — igual em todas as páginas */
+  --jcf-content-top:      100px;
   --jcf-logo-width:       131px;
   --jcf-logo-height:      71px;
   --jcf-grid-columns:     3;
   --jcf-grid-item-width:  280px;
   --jcf-grid-gap:         30px;
+}
+/* Distância header → conteúdo em tablet e mobile */
+@media (max-width: 1024px) {
+  :root { --jcf-content-top: 60px; }
+}
+@media (max-width: 767px) {
+  :root { --jcf-content-top: 40px; }
 }
 /* --------------------------------------------------------------------------
    4. RESET & BASE
@@ -380,9 +397,13 @@ p, a, span, button, input, textarea, label {
   display: flex;
 }
 
+/* A imagem ocupa o máximo do ecrã, deixando livres as faixas dos botões:
+   laterais 96px (setas: 24px margem + 48px botão + 24px folga)
+   topo/fundo 80px (fechar em cima, contador em baixo) */
 .jcf-lightbox__img {
-  max-width: 90vw;
-  max-height: 90vh;
+  width: calc(100vw - 192px);
+  height: calc(100vh - 160px);
+  height: calc(100dvh - 160px);
   object-fit: contain;
   border-radius: 2px;
   cursor: default;
@@ -451,6 +472,30 @@ p, a, span, button, input, textarea, label {
   color: rgba(255, 255, 255, 0.6);
   font-size: 13px;
   letter-spacing: 1px;
+}
+
+/* Mobile: setas passam para baixo, junto ao contador, e a imagem usa a largura toda */
+@media (max-width: 767px) {
+  .jcf-lightbox__img {
+    width: calc(100vw - 32px);
+    height: calc(100vh - 176px);
+    height: calc(100dvh - 176px);
+  }
+
+  .jcf-lightbox__btn {
+    top: auto;
+    bottom: 16px;
+    transform: none;
+    width: 44px;
+    height: 44px;
+  }
+
+  .jcf-lightbox__btn--prev { left: 16px; }
+  .jcf-lightbox__btn--next { right: 16px; }
+
+  .jcf-lightbox__counter { bottom: 30px; }
+
+  .jcf-lightbox__close { top: 16px; right: 16px; }
 }
 
 /* Galeria images cursor */

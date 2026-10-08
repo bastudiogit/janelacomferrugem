@@ -34,10 +34,11 @@
        ======================================================================= */
     .jcf-objetos-section {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
+      /* Sidebar | coluna principal (mesma largura da hero da homepage) | margem */
+      grid-template-columns: minmax(0, 1fr) var(--jcf-grid-main) minmax(0, 1fr);
+      column-gap: 0;
       width: 100%;
-      padding: 100px 60px 60px;
+      padding: var(--jcf-content-top) 60px 60px;
       align-items: flex-start;
       flex: 1;
       min-height: 0;
@@ -46,11 +47,12 @@
 
     .jcf-objetos-section__sidebar {
       grid-column: 1;
+      padding-right: 24px;
       padding-top: 4px;
     }
 
     .jcf-objetos-grid-container {
-      grid-column: 4 / 10;
+      grid-column: 2;
     }
 
     .jcf-objetos-grid {
@@ -128,7 +130,7 @@
       .jcf-objetos-section {
         display: flex;
         flex-direction: column;
-        padding: 60px 32px;
+        padding: var(--jcf-content-top) 32px 60px;
         gap: 32px;
       }
 
@@ -141,7 +143,7 @@
     /* --- MOBILE ---------------------------------------------------------- */
     @media (max-width: 767px) {
       .jcf-objetos-section {
-        padding: 60px 24px 30px;
+        padding: var(--jcf-content-top) 24px 30px;
         gap: 24px;
       }
 
@@ -167,10 +169,11 @@
           <span></span>
         </button>
         <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="quem-somos.html" class="jcf-menu-dropdown__link">Quem Somos</a>
+          <a href="o-que-fazemos.html" class="jcf-menu-dropdown__link">O Que Fazemos</a>
           <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
           <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
-          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
-          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+          <a href="contactos.html" class="jcf-menu-dropdown__link">Contactos</a>
         </nav>
       </div>
     </header>
@@ -186,35 +189,35 @@
 
           <a href="objeto-detalhe.html" class="jcf-object-card">
             <div class="jcf-object-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1595351298020-038700609878?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1656440536778-a6f1d40fa8ca?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-object-card__name">Objecto 1</h2>
           </a>
 
           <a href="objeto-detalhe.html" class="jcf-object-card">
             <div class="jcf-object-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 2" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1631125915902-d8abe9225ff2?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 2" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-object-card__name">Objecto 2</h2>
           </a>
 
           <a href="objeto-detalhe.html" class="jcf-object-card">
             <div class="jcf-object-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1607556672044-6110fc499247?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 3" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1674390521253-79caf82d0ceb?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 3" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-object-card__name">Objecto 3</h2>
           </a>
 
           <a href="objeto-detalhe.html" class="jcf-object-card">
             <div class="jcf-object-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1590605105526-5c08f63f89aa?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 4" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1631125914087-d249da84932c?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 4" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-object-card__name">Objecto 4</h2>
           </a>
 
           <a href="objeto-detalhe.html" class="jcf-object-card">
             <div class="jcf-object-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 5" width="400" height="500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1750306956241-521124641c73?w=400&h=500&fit=crop&crop=center&auto=format&q=80" alt="Objecto 5" width="400" height="500" loading="lazy">
             </div>
             <h2 class="jcf-object-card__name">Objecto 5</h2>
           </a>

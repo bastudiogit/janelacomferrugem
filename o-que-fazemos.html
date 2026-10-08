@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Que Fazemos — Janela com Ferrugem</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="jcf-globals.css">
+  <style>
+    /* =======================================================================
+       O QUE FAZEMOS — Layout principal
+       Elementor: Container > Direction: Column > Max Width: 1440px
+       ======================================================================= */
+    .jcf-oqf {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+      width: 100%;
+      max-width: var(--jcf-container-max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* =======================================================================
+       GRELHA — Sidebar | coluna principal (960px, igual à hero da homepage)
+       ======================================================================= */
+    .jcf-oqf-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--jcf-grid-main) minmax(0, 1fr);
+      column-gap: 0;
+      width: 100%;
+      padding: var(--jcf-content-top) 60px 100px;
+      align-items: flex-start;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+    }
+
+    .jcf-oqf-sidebar {
+      grid-column: 1;
+      padding-right: 24px;
+      padding-top: 4px;
+    }
+
+    .jcf-oqf-content {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+    }
+
+    /* =======================================================================
+       SERVIÇO — Imagem + texto (alterna o lado da imagem)
+       Elementor: Container > Direction: Row > 2 colunas 50/50 > Gap 48px
+       ======================================================================= */
+    .jcf-oqf-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 48px;
+      align-items: center;
+    }
+
+    .jcf-oqf-item:nth-child(even) .jcf-oqf-item__image {
+      order: 2;
+    }
+
+    .jcf-oqf-item__image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 2px;
+      background-color: #E8E5DF;
+    }
+
+    .jcf-oqf-item__image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .jcf-oqf-item__image:hover {
+      opacity: 1;
+    }
+
+    .jcf-oqf-item__image:hover img {
+      transform: scale(1.02);
+    }
+
+    .jcf-oqf-item__text {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .jcf-oqf-item__title {
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--e-global-color-primary);
+      line-height: 1.4;
+      font-weight: var(--jcf-font-light);
+    }
+
+    .jcf-oqf-item__desc {
+      font-size: var(--jcf-fs-body);
+      line-height: var(--jcf-lh-body);
+      color: var(--e-global-color-secondary);
+    }
+
+    /* Botão "Saber mais" — mesmo hover dos restantes botões */
+    .jcf-oqf-item__link {
+      width: fit-content;
+      align-self: flex-start;
+      font-size: var(--jcf-fs-section-title);
+      letter-spacing: var(--jcf-ls-section-title);
+      text-transform: uppercase;
+      color: var(--e-global-color-secondary);
+      white-space: nowrap;
+      padding: 3px 8px;
+      margin-left: -8px;
+      border-radius: 2px;
+      transition: background-color 0.2s ease;
+    }
+
+    .jcf-oqf-item__link:hover {
+      background-color: var(--e-global-color-accent);
+      opacity: 1;
+    }
+
+    /* --- TABLET ---------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .jcf-oqf-section {
+        display: flex;
+        flex-direction: column;
+        padding: var(--jcf-content-top) 32px 80px;
+        gap: 32px;
+      }
+
+      .jcf-oqf-content {
+        width: 100%;
+        gap: 80px;
+      }
+
+      .jcf-oqf-item {
+        column-gap: 32px;
+      }
+    }
+
+    /* --- MOBILE ---------------------------------------------------------- */
+    @media (max-width: 767px) {
+      .jcf-oqf-section {
+        padding: var(--jcf-content-top) 24px 60px;
+        gap: 24px;
+      }
+
+      .jcf-oqf-content {
+        gap: 60px;
+      }
+
+      .jcf-oqf-item {
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+      }
+
+      .jcf-oqf-item:nth-child(even) .jcf-oqf-item__image {
+        order: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="jcf-oqf">
+
+    <header class="jcf-header">
+      <a href="index.html" class="jcf-header__logo" aria-label="Janela com Ferrugem — Página Inicial">
+        <img src="assets/img/logo@2x.png" srcset="assets/img/logo@1x.png 1x, assets/img/logo@2x.png 2x" alt="Janela com Ferrugem — Arquitetura com Propósito"
+          class="jcf-header__logo-img">
+      </a>
+      <div class="jcf-header__nav-wrapper">
+        <button class="jcf-header__menu-toggle" aria-label="Abrir menu" aria-expanded="false" id="menuToggle">
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="quem-somos.html" class="jcf-menu-dropdown__link">Quem Somos</a>
+          <a href="o-que-fazemos.html" class="jcf-menu-dropdown__link">O Que Fazemos</a>
+          <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
+          <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
+          <a href="contactos.html" class="jcf-menu-dropdown__link">Contactos</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="jcf-oqf-section">
+
+      <aside class="jcf-oqf-sidebar">
+        <h1 class="jcf-section-label">O Que Fazemos</h1>
+      </aside>
+
+      <div class="jcf-oqf-content">
+
+        <article class="jcf-oqf-item">
+          <a href="servico-arquitetura.html" class="jcf-oqf-item__image" tabindex="-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1782070308095-0f74bbc79c61?w=960&h=720&fit=crop&crop=entropy&auto=format&q=80" alt="Casa de pedra reabilitada com porta em arco e escadaria exterior" width="960" height="720" loading="lazy">
+          </a>
+          <div class="jcf-oqf-item__text">
+            <h2 class="jcf-oqf-item__title">Arquitetura</h2>
+            <p class="jcf-oqf-item__desc">Cada projeto começa por ouvir. O terreno, as pessoas, o que já lá estava antes de nós. No Norte de Portugal, entre montanha e rio, desenhamos casas, reabilitações e espaços que fazem sentido daqui a vinte anos.</p>
+            <a href="servico-arquitetura.html" class="jcf-oqf-item__link">Saber mais &#8594;</a>
+          </div>
+        </article>
+
+        <article class="jcf-oqf-item">
+          <a href="servico-arranjos-exteriores.html" class="jcf-oqf-item__image" tabindex="-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1767463130104-9e0c76fa5e5a?w=960&h=720&fit=crop&crop=entropy&auto=format&q=80" alt="Arco em pedra aberto para um relvado com percurso em gravilha" width="960" height="720" loading="lazy">
+          </a>
+          <div class="jcf-oqf-item__text">
+            <h2 class="jcf-oqf-item__title">Arranjos Exteriores</h2>
+            <p class="jcf-oqf-item__desc">O exterior prolonga a casa na paisagem. Desenhamos jardins, pátios, muros, percursos e zonas de estar. Espaços onde o construído e o natural se encontram sem forçar.</p>
+            <a href="servico-arranjos-exteriores.html" class="jcf-oqf-item__link">Saber mais &#8594;</a>
+          </div>
+        </article>
+
+        <article class="jcf-oqf-item">
+          <a href="servico-light-design.html" class="jcf-oqf-item__image" tabindex="-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1529047033375-f402d3da24ca?w=960&h=720&fit=crop&crop=entropy&auto=format&q=80" alt="Luz natural de uma janela projetada numa parede" width="960" height="720" loading="lazy">
+          </a>
+          <div class="jcf-oqf-item__text">
+            <h2 class="jcf-oqf-item__title">Light Design</h2>
+            <p class="jcf-oqf-item__desc">Um espaço bem iluminado ganha profundidade, atmosfera e emoção. Trabalhamos a iluminação como mais um material de construção: invisível quando bem feita, mas essencial na experiência de cada espaço.</p>
+            <a href="servico-light-design.html" class="jcf-oqf-item__link">Saber mais &#8594;</a>
+          </div>
+        </article>
+
+        <article class="jcf-oqf-item">
+          <a href="servico-arquitetura-interiores.html" class="jcf-oqf-item__image" tabindex="-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1752407828488-1c6fafa47c50?w=960&h=720&fit=crop&crop=entropy&auto=format&q=80" alt="Interior com revestimento em madeira e luz natural filtrada" width="960" height="720" loading="lazy">
+          </a>
+          <div class="jcf-oqf-item__text">
+            <h2 class="jcf-oqf-item__title">Arquitetura de Interiores</h2>
+            <p class="jcf-oqf-item__desc">O interior de uma casa é onde a vida acontece. Desenhamos espaços que refletem quem os habita, sem excessos nem tendências passageiras. Materiais naturais, proporções pensadas e atenção ao modo como as pessoas vivem.</p>
+            <a href="servico-arquitetura-interiores.html" class="jcf-oqf-item__link">Saber mais &#8594;</a>
+          </div>
+        </article>
+
+        <article class="jcf-oqf-item">
+          <a href="servico-produto.html" class="jcf-oqf-item__image" tabindex="-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1788296827388-567d5b582406?w=960&h=720&fit=crop&crop=entropy&auto=format&q=80" alt="Peças de madeira torneada numa bancada de oficina" width="960" height="720" loading="lazy">
+          </a>
+          <div class="jcf-oqf-item__text">
+            <h2 class="jcf-oqf-item__title">Produto</h2>
+            <p class="jcf-oqf-item__desc">Da escala da casa à escala da mão. O nosso design de produto nasce da mesma filosofia dos projetos de arquitetura: materiais honestos, formas com propósito e o tempo como aliado.</p>
+            <a href="servico-produto.html" class="jcf-oqf-item__link">Saber mais &#8594;</a>
+          </div>
+        </article>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <div class="jcf-menu-backdrop" id="menuBackdrop"></div>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('menuToggle');
+      const dropdown = document.getElementById('menuDropdown');
+      const backdrop = document.getElementById('menuBackdrop');
+      function openMenu() { dropdown.classList.add('is-active'); backdrop.classList.add('is-active'); toggle.setAttribute('aria-expanded', 'true'); const fl = dropdown.querySelector('a'); if (fl) fl.focus(); }
+      function closeMenu() { dropdown.classList.remove('is-active'); backdrop.classList.remove('is-active'); toggle.setAttribute('aria-expanded', 'false'); }
+      function toggleMenu() { dropdown.classList.contains('is-active') ? closeMenu() : openMenu(); }
+      toggle.addEventListener('click', toggleMenu);
+      backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dropdown.classList.contains('is-active')) { closeMenu(); toggle.focus(); } });
+    })();
+  </script>
+</body>
+
+</html>

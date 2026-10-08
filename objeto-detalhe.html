@@ -33,10 +33,11 @@
     /* OBJETO DETALHE — SECTION (12 Columns System — Igual a projeto-detalhe.html) */
     .jcf-objeto-detalhe-section {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
+      /* Sidebar | coluna principal (mesma largura da hero da homepage) | margem */
+      grid-template-columns: minmax(0, 1fr) var(--jcf-grid-main) minmax(0, 1fr);
+      column-gap: 0;
       width: 100%;
-      padding: 100px 60px 60px;
+      padding: var(--jcf-content-top) 60px 60px;
       align-items: flex-start;
       flex: 1;
       min-height: 0;
@@ -46,6 +47,7 @@
     /* Coluna 1: Sidebar Meta do Objeto */
     .jcf-objeto-sidebar {
       grid-column: 1;
+      padding-right: 24px;
       padding-top: 4px;
       display: flex;
       flex-direction: column;
@@ -68,7 +70,8 @@
       margin-left: -8px;
       border-radius: 2px;
       margin-bottom: 12px;
-      transition: background-color 0.2s ease, opacity 0.2s ease;
+      transition: background-color 0.2s ease;
+      width: fit-content;
     }
     .jcf-back-link:hover {
       background-color: var(--e-global-color-accent); /* #F3E4D1 */
@@ -109,13 +112,16 @@
       text-transform: uppercase;
       color: var(--e-global-color-secondary);
       white-space: nowrap;
-      padding: 6px 10px;
-      margin-left: -10px;
+      padding: 3px 8px;
+      margin-left: -8px;
       border-radius: 2px;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      transition: background-color 0.2s ease;
+      width: fit-content;
+      align-self: flex-start;
     }
     .jcf-objeto-sidebar__cta:hover {
       background-color: var(--e-global-color-accent);
+      opacity: 1;
     }
     .jcf-objeto-sidebar__cta svg {
       width: 14px;
@@ -125,7 +131,7 @@
 
     /* Colunas 4 a 9: Conteúdo do Objeto */
     .jcf-objeto-content {
-      grid-column: 4 / 10;
+      grid-column: 2;
       display: flex;
       flex-direction: column;
       gap: 60px;
@@ -250,12 +256,12 @@
 
     /* Responsive */
     @media (max-width: 1024px) {
-      .jcf-objeto-detalhe-section { padding: 100px 60px 40px; }
-      .jcf-objeto-sidebar { grid-column: 1 / 4; }
-      .jcf-objeto-content { grid-column: 4 / 13; }
+      .jcf-objeto-detalhe-section { display: flex; flex-direction: column; padding: var(--jcf-content-top) 32px 60px; gap: 32px; }
+      .jcf-objeto-sidebar { width: 100%; padding-right: 0; }
+      .jcf-objeto-content { width: 100%; }
     }
     @media (max-width: 767px) {
-      .jcf-objeto-detalhe-section { display: flex; flex-direction: column; padding: 40px 24px 30px; gap: 40px; }
+      .jcf-objeto-detalhe-section { display: flex; flex-direction: column; padding: var(--jcf-content-top) 24px 30px; gap: 40px; }
       .jcf-objeto-sidebar { width: 100%; }
       .jcf-objeto-content { width: 100%; gap: 40px; }
     }
@@ -273,10 +279,11 @@
           <span></span>
         </button>
         <nav class="jcf-menu-dropdown" id="menuDropdown" role="navigation" aria-label="Menu principal">
+          <a href="quem-somos.html" class="jcf-menu-dropdown__link">Quem Somos</a>
+          <a href="o-que-fazemos.html" class="jcf-menu-dropdown__link">O Que Fazemos</a>
           <a href="projetos.html" class="jcf-menu-dropdown__link">Projetos</a>
           <a href="objetos.html" class="jcf-menu-dropdown__link">Objetos</a>
-          <a href="sobre.html" class="jcf-menu-dropdown__link">Sobre</a>
-          <a href="contacto.html" class="jcf-menu-dropdown__link">Contacto</a>
+          <a href="contactos.html" class="jcf-menu-dropdown__link">Contactos</a>
         </nav>
       </div>
     </header>
@@ -304,13 +311,13 @@
           <div class="jcf-galeria__track-wrapper">
             <div class="jcf-galeria__track" id="galeriaTrack">
               <div class="jcf-galeria__slide">
-                <img src="https://images.unsplash.com/photo-1595351298020-038700609878?w=760&h=460&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 1" width="760" height="460" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1656440536778-a6f1d40fa8ca?w=760&h=460&fit=crop&crop=center&auto=format&q=80" data-full="https://images.unsplash.com/photo-1656440536778-a6f1d40fa8ca?w=2400&h=1453&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 1" width="760" height="460" loading="lazy">
               </div>
               <div class="jcf-galeria__slide">
-                <img src="https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?w=760&h=460&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 2" width="760" height="460" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1705320678447-78c5fe2615a7?w=760&h=460&fit=crop&crop=center&auto=format&q=80" data-full="https://images.unsplash.com/photo-1705320678447-78c5fe2615a7?w=2400&h=1453&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 2" width="760" height="460" loading="lazy">
               </div>
               <div class="jcf-galeria__slide">
-                <img src="https://images.unsplash.com/photo-1607556672044-6110fc499247?w=760&h=460&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 3" width="760" height="460" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1679928735654-d163f561464c?w=760&h=460&fit=crop&crop=center&auto=format&q=80" data-full="https://images.unsplash.com/photo-1679928735654-d163f561464c?w=2400&h=1453&fit=crop&crop=center&auto=format&q=80" alt="Objecto 1 — Vista 3" width="760" height="460" loading="lazy">
               </div>
             </div>
             <button class="jcf-galeria__btn jcf-galeria__btn--prev" id="galeriaPrev" aria-label="Vista anterior">&#8592;</button>
@@ -402,8 +409,10 @@
       let lbCurrent = 0;
 
       document.querySelectorAll(".jcf-galeria__slide img").forEach(function(img) {
-        allImages.push({ src: img.src, alt: img.alt });
-        img.addEventListener("click", function() { openLightbox(allImages.indexOf(allImages.find(function(i) { return i.src === img.src; }))); });
+        const idx = allImages.length;
+        // data-full: versão em alta resolução para o lightbox (fallback: src)
+        allImages.push({ src: img.dataset.full || img.src, alt: img.alt });
+        img.addEventListener("click", function() { openLightbox(idx); });
       });
 
       function openLightbox(idx) {
